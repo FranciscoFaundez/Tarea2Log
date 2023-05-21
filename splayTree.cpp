@@ -155,12 +155,57 @@ class SplayTree{
         return Splay(key, root);
     }
 
-}
+
+    // Traversal of the tree top check if the tree works correctly
+    void InOrder(Node* root)
+   {
+      if (root)
+      {
+         InOrder(root->left);
+         cout<< "key: " <<root->key;
+         if(root->left)
+         cout<< " | left child: "<< root->left->key;
+         if(root->right)
+         cout << " | right child: " << root->right->key;
+         cout<< "\n";
+         InOrder(root->right);
+      }
+   }
+
+};
 
 
 
 
 
 int main() {
+
+   SplayTree st;
+   Node *root;
+   root = NULL;
+
+   root = st.Insert(4, root);
+   root = st.Insert(5, root);
+   root = st.Insert(1, root);
+   root = st.Insert(10, root);
+   root = st.Insert(8, root);
+
+   st.InOrder(root);
+
+   root = st.Insert(10, root);
+   root = st.Insert(11, root);
+   root = st.Insert(3, root);
+
+   st.InOrder(root);
+
+   root = st.Search(10, root); //el search está eliminando el 10
+   cout << "node buscado (deberia ser 10): " << root->key << endl;
+
+   st.InOrder(root);
+
+   root = st.Insert(4, root);
+
+   st.InOrder(root);
+
     return 0;
 }
