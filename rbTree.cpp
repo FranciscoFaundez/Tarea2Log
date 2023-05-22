@@ -22,18 +22,15 @@ public:
 
 	// initializes the nodes with appropirate values
 	// all the pointers are set to point to the null pointer
-	void initializeNULLNode(NodePtr node, NodePtr parent) {
-		node->key = 0;
-		node->parent = parent;
-		node->left = nullptr;
-		node->right = nullptr;
-		node->color = 0;
-	}
-
 
 	NodePtr searchTreeHelper(NodePtr node, int key) {
 		if (node == TNULL || key == node->key) {
-			return node;
+
+			if (node->key == key) {
+        		return node;
+    		}else{
+			return NULL;
+			}
 		}
 
 		if (key < node->key) {
@@ -250,7 +247,7 @@ public:
 			return;
 		}
 
-		// if the grandparent is null, simply return
+		// if the grandparent is null, return
 		if (node->parent->parent == nullptr) {
 			return;
 		}
@@ -335,6 +332,8 @@ public:
 
 int main() {
 	RBTree bst;
+
+	Node* test = NULL;
 	bst.insert(8);
 	bst.insert(18);
 	bst.insert(5);
@@ -343,6 +342,19 @@ int main() {
 	bst.insert(25);
 	bst.insert(40);
 	bst.insert(80);
+	test = bst.search(18);
+	cout << "Nodo buscado (deberia ser 18): " << test->key << endl;
+
+	//Buscar nodo que no está en el árbool
+	test = bst.search(50);
+	if (test == NULL){
+		cout << "Nodo no encontrado " << endl;
+	}
+	else{
+		cout << "Nodo buscado : " << test->key << endl;
+	}
+
+
 	bst.prettyPrint();
 	return 0;
 }

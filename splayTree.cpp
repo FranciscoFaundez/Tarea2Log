@@ -13,6 +13,7 @@ struct Node{
 class SplayTree{
 
     public:
+    Node* Root;
 
     // Create a function to rotate to the right.
     Node* rightRotate(Node* k2){
@@ -188,7 +189,7 @@ int main() {
    root = st.Insert(5, root);
    root = st.Insert(1, root);
    root = st.Insert(10, root);
-   root = st.Insert(8, root);
+   st.Insert(8, root);
 
    st.InOrder(root);
 
@@ -198,8 +199,18 @@ int main() {
 
    st.InOrder(root);
 
-   root = st.Search(10, root); //el search está eliminando el 10
+   root = st.Search(10, root); 
    cout << "Nodo buscado (deberia ser 10): " << root->key << endl;
+
+    //buscar nodo que no está
+    root = st.Search(100, root); 
+    if (root->key != 100){
+        cout << "nodo no encontrado" << endl;
+    }
+    else{
+        cout << "Nodo buscado: " << root->key << endl;
+    }
+
 
    st.InOrder(root);
 
