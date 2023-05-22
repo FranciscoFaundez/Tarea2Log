@@ -199,7 +199,7 @@ int main() {
    st.InOrder(root);
 
    root = st.Search(10, root); //el search está eliminando el 10
-   cout << "node buscado (deberia ser 10): " << root->key << endl;
+   cout << "Nodo buscado (deberia ser 10): " << root->key << endl;
 
    st.InOrder(root);
 
