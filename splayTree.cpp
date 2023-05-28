@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include "splayTree.h"
 using namespace std;
 
 // Create a structure to declare variable key, left child pointer and right child pointer.
@@ -13,7 +14,7 @@ struct Node{
 class SplayTree{
 
     public:
-    Node* Root;
+    Node* root;
 
     // Create a function to rotate to the right.
     Node* rightRotate(Node* k2){
@@ -98,7 +99,7 @@ class SplayTree{
 
 
     // Create a function New_Node() to create nodes in the tree.
-    Node * New_Node(int key){
+    Node* New_Node(int key){
         Node* p_node = new Node;
         if(!p_node){
             fprintf(stderr, "Out of memory!\n");
@@ -112,7 +113,7 @@ class SplayTree{
 
 
     // Create a function Insert() to insert nodes into the tree.
-    Node *Insert(int key, Node* root){
+    Node* Insert(int key, Node* root){
 
         static Node* p_node = NULL;
 
