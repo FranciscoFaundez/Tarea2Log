@@ -1,24 +1,24 @@
 #ifndef SPLAYTREE_H
 #define SPLAYTREE_H
 
-struct Node {
+struct SplayNode {
 	int key; 
-	Node *left; // pointer to left child
-	Node *right; // pointer to right child
+	SplayNode *left; // pointer to left child
+	SplayNode *right; // pointer to right child
 };
 
 class SplayTree{
 
     public:
-    Node* root;
+    SplayNode* root;
 
-    Node* rightRotate(Node* k2);
-    Node* leftRotate(Node *k2);
-    Node* Splay(int key, Node* root);
-    Node* New_Node(int key);
-    Node* Insert(int key, Node* root);
-    Node* Search(int key, Node* root);
-    void InOrder(Node* root);
+    SplayNode* rightRotate(SplayNode* k2);
+    SplayNode* leftRotate(SplayNode *k2);
+    SplayNode* Splay(int key, SplayNode* root);
+    SplayNode* New_Node(int key);
+    SplayNode* Insert(int key, SplayNode* root);
+    SplayNode* Search(int key, SplayNode* root);
+    void InOrder(SplayNode* root);
 
 };
 

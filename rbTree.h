@@ -1,7 +1,6 @@
 #ifndef RBTREE_H
 #define RBTREE_H
 
-
 struct Node {
 	int key; 
 	Node *parent; 
