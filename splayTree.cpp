@@ -1,23 +1,24 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+
 using namespace std;
 
 // Create a structure to declare variable key, left child pointer and right child pointer.
-struct Node{
+struct SplayNode{
    int key;  
-   Node* left;
-   Node* right;
+   SplayNode* left;
+   SplayNode* right;
 };
 
 class SplayTree{
 
     public:
-    Node* Root;
+    SplayNode* root;
 
     // Create a function to rotate to the right.
-    Node* rightRotate(Node* k2){
-        Node * k1 = k2->left;
+    SplayNode* rightRotate(SplayNode* k2){
+        SplayNode * k1 = k2->left;
         k2->left = k1->right;
         k1->right = k2;
         return k1;
@@ -25,8 +26,8 @@ class SplayTree{
 
 
     // Create a function to rotate to the left.
-    Node* leftRotate(Node *k2){
-        Node* k1 = k2->right;
+    SplayNode* leftRotate(SplayNode *k2){
+        SplayNode* k1 = k2->right;
         k2->right = k1->left;
         k1->left = k2;
         return k1;
@@ -34,16 +35,16 @@ class SplayTree{
 
 
     // Create a function Splay to implement top-down splay tree.
-    Node* Splay(int key, Node* root){
+    SplayNode* Splay(int key, SplayNode* root){
 
         if (!root){
             return NULL;
         } 
 
-        Node header;
+        SplayNode header;
         header.left = header.right = NULL;
-        Node* leftTreeMax = &header;
-        Node * rightTreeMin = &header;
+        SplayNode* leftTreeMax = &header;
+        SplayNode * rightTreeMin = &header;
 
         for(;;){
 
@@ -98,8 +99,8 @@ class SplayTree{
 
 
     // Create a function New_Node() to create nodes in the tree.
-    Node * New_Node(int key){
-        Node* p_node = new Node;
+    SplayNode* New_Node(int key){
+        SplayNode* p_node = new SplayNode;
         if(!p_node){
             fprintf(stderr, "Out of memory!\n");
             exit(1);
@@ -112,9 +113,9 @@ class SplayTree{
 
 
     // Create a function Insert() to insert nodes into the tree.
-    Node *Insert(int key, Node* root){
+    SplayNode* Insert(int key, SplayNode* root){
 
-        static Node* p_node = NULL;
+        static SplayNode* p_node = NULL;
 
         if (!p_node){
             p_node = New_Node(key);
@@ -152,13 +153,13 @@ class SplayTree{
 
 
     // Create a function Search() to search the nodes in the tree.
-    Node* Search(int key, Node* root){
+    SplayNode* Search(int key, SplayNode* root){
         return Splay(key, root);
     }
 
 
     // Traversal of the tree top check if the tree works correctly
-    void InOrder(Node* root)
+    void InOrder(SplayNode* root)
    {
       if (root)
       {
@@ -182,7 +183,7 @@ class SplayTree{
 int main() {
 
    SplayTree st;
-   Node *root;
+   SplayNode *root;
    root = NULL;
 
    root = st.Insert(4, root);
