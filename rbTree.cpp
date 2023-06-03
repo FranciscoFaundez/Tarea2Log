@@ -39,7 +39,7 @@ public:
 		return searchTreeHelper(node->right, key);
 	}
 
-
+/*
 	void rbTransplant(NodePtr u, NodePtr v){
 		if (u->parent == nullptr) {
 			root = v;
@@ -50,6 +50,7 @@ public:
 		}
 		v->parent = u->parent;
 	}
+*/
 
 	
 	// fix the red-black tree
@@ -255,6 +256,22 @@ public:
 		// Fix the tree
 		fixInsert(node);
 	}
+	//-----------------------------------------------------//
+
+	//Now we create functions to delete the Tree
+	void deleteTree(Node* raiz) {
+		if (raiz == nullptr) {
+			return;
+		}
+		deleteTree(root->left);
+		deleteTree(root->right);
+		delete raiz;
+	}
+
+	void deleteCompleteTree() {
+        deleteTree(root);
+        root = nullptr;
+    }
 
 
 	//---------------------------------------------------//
@@ -356,5 +373,10 @@ int main() {
 
 
 	bst.prettyPrint();
+
+	//Test to check if the tree is being deleted correctly
+	bst.deleteCompleteTree();
+	bst.prettyPrint();
+	
 	return 0;
 }

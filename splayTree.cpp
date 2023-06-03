@@ -157,6 +157,24 @@ class SplayTree{
         return Splay(key, root);
     }
 
+    //----------------------------------------//
+    //Eliminate Tree
+    void DeleteTree(SplayNode* root){
+        if (root == NULL) return;
+        DeleteTree(root->left);
+        DeleteTree(root->right);
+        delete root;
+    }
+
+    void deleteCompleteTree() {
+        DeleteTree(root);
+        root = nullptr;
+    }
+
+
+
+
+    //----------------------------------------//
 
     // Traversal of the tree top check if the tree works correctly
     void InOrder(SplayNode* root)
@@ -203,7 +221,7 @@ int main() {
    root = st.Search(10, root); 
    cout << "Nodo buscado (deberia ser 10): " << root->key << endl;
 
-    //buscar nodo que no está
+    //Search for non existing node
     root = st.Search(100, root); 
     if (root->key != 100){
         cout << "nodo no encontrado" << endl;
@@ -219,5 +237,9 @@ int main() {
 
    st.InOrder(root);
 
+   //Delete the tree
+    st.deleteCompleteTree();
+    st.InOrder(root);
+    
     return 0;
 }
