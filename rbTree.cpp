@@ -39,19 +39,6 @@ public:
 		return searchTreeHelper(node->right, key);
 	}
 
-/*
-	void rbTransplant(NodePtr u, NodePtr v){
-		if (u->parent == nullptr) {
-			root = v;
-		} else if (u == u->parent->left){
-			u->parent->left = v;
-		} else {
-			u->parent->right = v;
-		}
-		v->parent = u->parent;
-	}
-*/
-
 	
 	// fix the red-black tree
 	void fixInsert(NodePtr k){
@@ -104,6 +91,7 @@ public:
 		root->color = 0;
 	}
 
+	
 	RBTree() {
 		TNULL = new Node;
 		TNULL->color = 0;
@@ -112,63 +100,11 @@ public:
 		root = TNULL;
 	}
 
+
 	// search the tree for the key k
 	// and return the corresponding node
 	NodePtr search(int k) {
 		return searchTreeHelper(this->root, k);
-	}
-
-	// find the node with the minimum key
-	NodePtr minimum(NodePtr node) {
-		while (node->left != TNULL) {
-			node = node->left;
-		}
-		return node;
-	}
-
-	// find the node with the maximum key
-	NodePtr maximum(NodePtr node) {
-		while (node->right != TNULL) {
-			node = node->right;
-		}
-		return node;
-	}
-
-	// find the successor of a given node
-	NodePtr successor(NodePtr x) {
-		// if the right subtree is not null,
-		// the successor is the leftmost node in the
-		// right subtree
-		if (x->right != TNULL) {
-			return minimum(x->right);
-		}
-
-		// else it is the lowest ancestor of x whose
-		// left child is also an ancestor of x.
-		NodePtr y = x->parent;
-		while (y != TNULL && x == y->right) {
-			x = y;
-			y = y->parent;
-		}
-		return y;
-	}
-
-	// find the predecessor of a given node
-	NodePtr predecessor(NodePtr x) {
-		// if the left subtree is not null,
-		// the predecessor is the rightmost node in the 
-		// left subtree
-		if (x->left != TNULL) {
-			return maximum(x->left);
-		}
-
-		NodePtr y = x->parent;
-		while (y != TNULL && x == y->left) {
-			x = y;
-			y = y->parent;
-		}
-
-		return y;
 	}
 
 	// rotate left at node x
@@ -283,31 +219,6 @@ public:
 	    }
 	}
 
-
-	void preOrderHelper(NodePtr node) {
-		if (node != TNULL) {
-			cout<<node->key<<" ";
-			preOrderHelper(node->left);
-			preOrderHelper(node->right);
-		} 
-	}
-
-	void inOrderHelper(NodePtr node) {
-		if (node != TNULL) {
-			inOrderHelper(node->left);
-			cout<<node->key<<" ";
-			inOrderHelper(node->right);
-		} 
-	}
-
-	void postOrderHelper(NodePtr node) {
-		if (node != TNULL) {
-			postOrderHelper(node->left);
-			postOrderHelper(node->right);
-			cout<<node->key<<" ";
-		} 
-	}
-
 	void printHelper(NodePtr root, string indent, bool last) {
 		// print the tree structure on the screen
 	   	if (root != TNULL) {
@@ -327,23 +238,7 @@ public:
 		}
 	}
 
-	// Pre-Order traversal
-	// Node->Left Subtree->Right Subtree
-	void preorder() {
-		preOrderHelper(this->root);
-	}
 
-	// In-Order traversal
-	// Left Subtree -> Node -> Right Subtree
-	void inorder() {
-		inOrderHelper(this->root);
-	}
-
-	// Post-Order traversal
-	// Left Subtree -> Right Subtree -> Node
-	void postorder() {
-		postOrderHelper(this->root);
-	}
 
 };
 
