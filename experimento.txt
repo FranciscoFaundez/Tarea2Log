@@ -1,1 +1,0 @@
-Tipo de Permutación,Alpha,Tipo de árbol,Max Número en Array,Número de Nodos,Tiempo de Búsqueda (us),Memoria Usada (bytes)
