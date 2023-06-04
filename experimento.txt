@@ -1,1 +1,5 @@
-Tipo de Permutación,Alpha,Tipo de árbol,Max Número en Array,Número de Nodos,Tiempo de Búsqueda (us),Memoria Usada (bytes)
+Tipo de Permutación,Alpha,Tipo de árbol,Max Número en Array,Número de Nodos,Tiempo de Búsqueda (us), Memoria Usada (bytes)
+S,1,X,10,2,3,2
+S,2,X,10,4,2.5,2
+Z,2,Y,10,4,4,2
+Z,2,Y,10,4,7,2

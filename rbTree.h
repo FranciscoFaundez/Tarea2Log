@@ -1,41 +1,42 @@
-#ifndef RBTREE_H
-#define RBTREE_H
+#ifndef RBTREE_H_INCLUDED
+#define RBTREE_H_INCLUDED
 
-struct Node {
-	int key; 
-	Node *parent; 
-	Node *left; // pointer to left child
-	Node *right; // pointer to right child
-	int color; // 1 -> Red, 0 -> Black
+#include <iostream>
+#include <cstdlib>
+#include "AbstractTree.h"
+
+enum Color {RED, BLACK};
+
+struct RBNode {
+    int key;
+    Color color;
+    RBNode *left, *right, *parent;
+
+    RBNode(int key) {
+        this->key = key;
+        color = RED;
+        left = right = parent = nullptr;
+    }
 };
 
-typedef Node *NodePtr;
+class RedBlackTree : public AbstractTree{
+private:
+    RBNode *root;
 
-class RBTree {
+    void leftRotate(RBNode *x);
+    void rightRotate(RBNode *x);
+    void fixInsert(RBNode *z);
+    RBNode* insert(RBNode *root, RBNode *z);
+    void preOrder(RBNode *root);
+    void clear(RBNode *root);
+    int memoryUsage(RBNode *root);
 
 public:
-	NodePtr root;
-	NodePtr TNULL;
-
-    NodePtr searchTreeHelper(NodePtr node, int key);
-    void rbTransplant(NodePtr u, NodePtr v);
-    void fixInsert(NodePtr k);
-    RBTree();
-    NodePtr search(int k);
-    NodePtr minimum(NodePtr node);
-    NodePtr maximum(NodePtr node);
-    NodePtr successor(NodePtr x);
-    NodePtr predecessor(NodePtr x);
-    void leftRotate(NodePtr x);
-    void rightRotate(NodePtr x);
-    void insert(int key);
-    void prettyPrint();
-    void preOrderHelper(NodePtr node);
-    void inOrderHelper(NodePtr node);
-    void postOrderHelper(NodePtr node);
-    void printHelper(NodePtr root, string indent, bool last);
-    void preorder();
-    void inorder();
-    void postorder();
+    RedBlackTree();
+    void insert(int key) override;
+    void print() override;
+    void clear() override;
+    int memoryUsage() override;
 };
-#endif
+
+#endif // RBTREE_H_INCLUDED

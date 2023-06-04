@@ -1,245 +1,179 @@
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
+#include "SplayTree.h"
 
-using namespace std;
-
-// Create a structure to declare variable key, left child pointer and right child pointer.
-struct SplayNode{
-   int key;  
-   SplayNode* left;
-   SplayNode* right;
-};
-
-class SplayTree{
-
-    public:
-    SplayNode* root;
-
-    // Create a function to rotate to the right.
-    SplayNode* rightRotate(SplayNode* k2){
-        SplayNode * k1 = k2->left;
-        k2->left = k1->right;
-        k1->right = k2;
-        return k1;
+/**
+* Constructor de la clase SplayTree.
+*/
+SplayTree::SplayTree() {
+    root = -1;
+    size = 0;
+}
+/**
+ * Inserta un nuevo nodo con la clave dada en el árbol.
+ * @param key La clave del nuevo nodo.
+ */
+void SplayTree::insert(int key) {
+    if (root == -1) {
+        nodes.push_back({key, -1, -1});
+        root = 0;
+        size++;
+        return;
     }
-
-
-    // Create a function to rotate to the left.
-    SplayNode* leftRotate(SplayNode *k2){
-        SplayNode* k1 = k2->right;
-        k2->right = k1->left;
-        k1->left = k2;
-        return k1;
+    root = splay(root, key);
+    if (nodes[root].key == key) {
+        return;
     }
-
-
-    // Create a function Splay to implement top-down splay tree.
-    SplayNode* Splay(int key, SplayNode* root){
-
-        if (!root){
-            return NULL;
-        } 
-
-        SplayNode header;
-        header.left = header.right = NULL;
-        SplayNode* leftTreeMax = &header;
-        SplayNode * rightTreeMin = &header;
-
-        for(;;){
-
-            if (key < root->key){
-
-                if (!root->left){
-                    break;
-                }
-
-                if (key < (root->left)->key){
-                    root = rightRotate(root);
-                    if(!root->left){
-                        break;
-                    }
-                }
-
-                rightTreeMin->left = root;
-                rightTreeMin = rightTreeMin->left;
-                root = root->left;
-                rightTreeMin->left = NULL;
+    int new_node = nodes.size();
+    nodes.push_back({key, -1, -1});
+    if (nodes[root].key > key) {
+        nodes[new_node].left = nodes[root].left;
+        nodes[new_node].right = root;
+        nodes[root].left = -1;
+    } else {
+        nodes[new_node].right = nodes[root].right;
+        nodes[new_node].left = root;
+        nodes[root].right = -1;
+    }
+    root = new_node;
+    size++;
+}
+/**
+ * Busca un nodo con la clave dada en el árbol.
+ * @param key La clave del nodo a buscar.
+ * @return true si se encuentra el nodo, false en caso contrario.
+ */
+bool SplayTree::search(int key) {
+    if (root == -1) {
+        return false;
+    }
+    root = splay(root, key);
+    return nodes[root].key == key;
+}
+/**
+ * Elimina todos los nodos del árbol.
+ */
+void SplayTree::clear() {
+    nodes.clear();
+    root = -1;
+    size = 0;
+}
+/**
+ * Imprime las claves de los nodos en orden preorden.
+ */
+void SplayTree::print() {
+    preOrder(root);
+    std::cout << std::endl;
+}
+/**
+ * Mide el uso en memoria del árbol.
+ * @return El tamaño en bytes del árbol.
+ */
+int SplayTree::memoryUsage() {
+    int total_size = 0;
+    total_size += sizeof(root);
+    total_size += sizeof(size);
+    for (int i = 0; i < nodes.size(); i++) {
+        total_size += sizeof(nodes[i].key);
+        total_size += sizeof(nodes[i].left);
+        total_size += sizeof(nodes[i].right);
+    }
+    total_size += sizeof(nodes);
+    return total_size;
+}
+/**
+ * Realiza una rotación a la derecha en el nodo dado.
+ * @param x El índice del nodo a rotar.
+ * @return El índice del nuevo nodo raíz.
+ */
+int SplayTree::rightRotate(int x) {
+    int y = nodes[x].left;
+    nodes[x].left = nodes[y].right;
+    nodes[y].right = x;
+    return y;
+}
+/**
+ * Realiza una rotación a la izquierda en el nodo dado.
+ * @param x El índice del nodo a rotar.
+ * @return El índice del nuevo nodo raíz.
+ */
+int SplayTree::leftRotate(int x) {
+    int y = nodes[x].right;
+    nodes[x].right = nodes[y].left;
+    nodes[y].left = x;
+    return y;
+}
+/**
+ * Realiza la operación Splay en el árbol con la clave dada.
+ * @param node El índice del nodo raíz del árbol.
+ * @param key La clave del nodo a buscar.
+ * @return El índice del nuevo nodo raíz.
+ */
+int  SplayTree::splay(int node, int key) {
+    if (node == -1 || nodes[node].key == key) {
+        return node;
+    }
+    if (nodes[node].key > key) {
+        if (nodes[node].left == -1) {
+            return node;
+        }
+        if (nodes[nodes[node].left].key > key) {
+            nodes[node].left = splay(nodes[node].left, key);
+            node = rightRotate(node);
+        } else if (nodes[nodes[node].left].key < key) {
+            nodes[nodes[node].left].right = splay(nodes[nodes[node].left].right, key);
+            if (nodes[nodes[node].left].right != -1) {
+                nodes[node].left = leftRotate(nodes[node].left);
             }
-
-            else if (key > root->key){
-                if (!root->right){
-                    break;
-                }
-
-                if (key > (root->right)->key){
-                    root = leftRotate(root);
-                    if (!root->right){
-                        break;
-                    }
-                }
-
-                leftTreeMax->right = root;
-                leftTreeMax = leftTreeMax->right;
-                root = root->right;
-                leftTreeMax->right = NULL;
+        }
+        return (nodes[node].left == -1) ? node : rightRotate(node);
+    } else {
+        if (nodes[node].right == -1) {
+            return node;
+        }
+        if (nodes[nodes[node].right].key > key) {
+            nodes[nodes[node].right].left = splay(nodes[nodes[node].right].left, key);
+            if (nodes[nodes[node].right].left != -1) {
+                nodes[node].right = rightRotate(nodes[node].right);
             }
-
-            else{
-                break;
-            }
+        } else if (nodes[nodes[node].right].key < key) {
+            nodes[node].right = splay(nodes[node].right, key);
+            node = leftRotate(node);
         }
-
-        leftTreeMax->right = root->left;
-        rightTreeMin->left = root->right;
-        root->left = header.right;
-        root->right = header.left;
-        return root;
+        return (nodes[node].right == -1) ? node : leftRotate(node);
     }
-
-
-    // Create a function New_Node() to create nodes in the tree.
-    SplayNode* New_Node(int key){
-        SplayNode* p_node = new SplayNode;
-        if(!p_node){
-            fprintf(stderr, "Out of memory!\n");
-            exit(1);
-        }
-
-        p_node->key = key;
-        p_node->left = p_node->right = NULL;
-        return p_node;
+}
+/**
+ * Imprime las claves de los nodos en orden preorden.
+ * @param node El índice del nodo raíz del árbol.
+ */
+void SplayTree::preOrder(int node) {
+    if (node != -1) {
+        std::cout << nodes[node].key << " ";
+        preOrder(nodes[node].left);
+        preOrder(nodes[node].right);
     }
-
-
-    // Create a function Insert() to insert nodes into the tree.
-    SplayNode* Insert(int key, SplayNode* root){
-
-        static SplayNode* p_node = NULL;
-
-        if (!p_node){
-            p_node = New_Node(key);
-        }
-        else{
-            p_node->key = key;
-        }
-        if (!root){
-            root = p_node;
-            p_node = NULL;
-            return root;
-        }
-
-        root = Splay(key, root);
-
-        if (key < root->key){
-            p_node->left = root->left;
-            p_node->right = root;
-            root ->left = NULL;
-            root = p_node;
-        }
-        else if(key > root->key){
-            p_node->right = root->right;
-            p_node->left = root;
-            root->right = NULL;
-            root = p_node;
-        }
-        else{
-            return root;
-        }
-
-        p_node = NULL;
-        return root;
-    }
-
-
-    // Create a function Search() to search the nodes in the tree.
-    SplayNode* Search(int key, SplayNode* root){
-        return Splay(key, root);
-    }
-
-    //----------------------------------------//
-    //Eliminate Tree
-    void DeleteTree(SplayNode* root){
-        if (root == NULL) return;
-        DeleteTree(root->left);
-        DeleteTree(root->right);
-        delete root;
-    }
-
-    void deleteCompleteTree() {
-        DeleteTree(root);
-        root = nullptr;
-    }
-
-
-
-
-    //----------------------------------------//
-
-    // Traversal of the tree top check if the tree works correctly
-    void InOrder(SplayNode* root)
-   {
-      if (root)
-      {
-         InOrder(root->left);
-         cout<< "key: " <<root->key;
-         if(root->left)
-         cout<< " | left child: "<< root->left->key;
-         if(root->right)
-         cout << " | right child: " << root->right->key;
-         cout<< "\n";
-         InOrder(root->right);
-      }
-   }
-
-};
-
-
-
-
+}
 
 int main() {
+    SplayTree tree;
 
-   SplayTree st;
-   SplayNode *root;
-   root = NULL;
+    tree.insert(100);
+    tree.insert(50);
+    tree.insert(200);
+    tree.insert(40);
+    tree.insert(30);
+    tree.insert(60);
+    tree.insert(55);
+    tree.insert(150);
+    tree.insert(300);
 
-   root = st.Insert(4, root);
-   root = st.Insert(5, root);
-   root = st.Insert(1, root);
-   root = st.Insert(10, root);
-   st.Insert(8, root);
+    tree.print();
 
-   st.InOrder(root);
+    std::cout << tree.search(55) << std::endl;
+    std::cout << tree.search(175) << std::endl;
 
-   root = st.Insert(10, root);
-   root = st.Insert(11, root);
-   root = st.Insert(3, root);
+    std::cout << "Memory usage: " << tree.memoryUsage() << " bytes" << std::endl;
 
-   st.InOrder(root);
+    tree.clear();
 
-   root = st.Search(10, root); 
-   cout << "Nodo buscado (deberia ser 10): " << root->key << endl;
-
-    //Search for non existing node
-    root = st.Search(100, root); 
-    if (root->key != 100){
-        cout << "nodo no encontrado" << endl;
-    }
-    else{
-        cout << "Nodo buscado: " << root->key << endl;
-    }
-
-
-   st.InOrder(root);
-
-   root = st.Insert(4, root);
-
-   st.InOrder(root);
-
-   //Delete the tree
-    st.deleteCompleteTree();
-    st.InOrder(root);
-    
     return 0;
 }

@@ -1,35 +1,9 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <random>
 #include <set>
 #include <cassert>
-
-std::vector<int> PermutationEqui(int n_max, int seed) {
-    // Tamaño del vector arr
-    const int SIZE_ARR_M = 1 << 28;
-
-    // Generamos la semilla para la función shuffle
-    std::mt19937 g(seed);
-
-    // Creamos el vector arr
-    std::vector<int> arr(SIZE_ARR_M);
-    for (int i = 0; i < SIZE_ARR_M; i++) {
-        // Agregamos a cada elemento i-esimo del vector
-        // el resto de dividir i entre n_max más 1
-        // Generando una periodicidad de 1 hasta n_max
-        arr[i] = (i % n_max) + 1;
-    }
-    
-    // Revolvemos el array
-    std::shuffle(arr.begin(), arr.end(), g);
-
-    // Retornamos el vector
-    return arr;
-}
+#include "Permutations.h"
 
 int main(){
-        // Constantes
+    // Constantes
     const int n_max = 5;
     const int seed = 1234;
 
@@ -65,4 +39,4 @@ int main(){
 
     std::cout << "All tests passed!" << std::endl;
     return 0;
-};
+}
