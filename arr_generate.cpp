@@ -34,7 +34,7 @@ vector<int> Equiprobable(int N, int M) {
 
 
 // Función que genera un arreglo skewed, según alpha
-vector<int> Skewed(int N, int M, int alpha) {
+vector<int> Skewed(int N, int M, double alpha) {
 
     int SUM = 0;
     // Crear un vector con elementos de 1 a N, en donde asignaremos f(i)
@@ -46,7 +46,7 @@ vector<int> Skewed(int N, int M, int alpha) {
 
     // Normalizar el arreglo
     for (int i = 0; i < N; ++i) {
-        repeticiones[i] = floor((repeticiones[i]/SUM)*M);
+        repeticiones[i] = ceil((static_cast<double>(repeticiones[i])/SUM)*M);
     }
     
     // Repetir cada elemento según repeticiones[i]
@@ -63,7 +63,16 @@ vector<int> Skewed(int N, int M, int alpha) {
     random_device rd;
     mt19937 g(rd());
     shuffle(secuencia.begin(), secuencia.end(), g);
-    
+
+    //print secuencia
+    int count = 0;
+    for (int i = 0; i < M; ++i) {
+        cout << secuencia[i] << " ";
+        count++;
+    }
+    //print count
+    cout << endl;
+    cout << count << endl;
     return secuencia;
 }
 
@@ -93,33 +102,7 @@ int main() {
     */
    //----------------------------------------------------//
 
-   //Skewed(100, 500, 1.5);
+   Skewed(100, 500, 1.5);
 
-   int N = 100;
-    int M = 500;
-    int alpha = 1;
-    int SUM = 0;
-    // Crear un vector con elementos de 1 a N, en donde asignaremos f(i)
-    vector<int> repeticiones(N);
-    for (int i = 0; i < N; i++) {
-        repeticiones[i] = floor(pow((i + 1), alpha));
-        SUM += repeticiones[i];
-    }
-    for (int i = 0; i < N; ++i) {
-        cout << repeticiones[i] << " ";
-    }
-
-    cout << " " << endl;
-    cout << "SUM: " << SUM << endl;
-    cout << " " << endl;
-    // Normalizar el arreglo
-    for (int i = 0; i < N; ++i) {
-        repeticiones[i] = floor((repeticiones[i]/SUM)*M);
-    }
-
-    //printear cada valor de repeticiones
-    for (int i = 0; i < N; ++i) {
-        cout << repeticiones[i] << " ";
-    }
     return 0;
 }
