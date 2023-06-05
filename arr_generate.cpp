@@ -7,19 +7,20 @@
 #include <cmath>
 
 using namespace std;
+using ll = long long;
 
 // Función que genera un arreglo equiprobable
-vector<int> Equiprobable(int N, int M) {
+vector<ll> Equiprobable(ll N, ll M) {
     // Crear un vector con elementos de 1 a N
-    vector<int> arreglo(N);
-    for (int i = 0; i < N; ++i) {
+    vector<ll> arreglo(N);
+    for (ll i = 0; i < N; ++i) {
         arreglo[i] = i + 1;
     }
     
     // Repetir cada elemento M/N veces
-    vector<int> secuencia(M);
-    int index = 0;
-    for (int i = 0; i < M; ++i) {
+    vector<ll> secuencia(M);
+    ll index = 0;
+    for (ll i = 0; i < M; ++i) {
         secuencia[i] = arreglo[index];
         index = (index + 1) % N;
     }
@@ -28,81 +29,96 @@ vector<int> Equiprobable(int N, int M) {
     random_device rd;
     mt19937 g(rd());
     shuffle(secuencia.begin(), secuencia.end(), g);
+
+    //---------------------------------------------------//
+
+    //print secuencia
+
+    cout << "equiprobable: " << endl;
+
+    ll count = 0;
+    for (ll i = 0; i < M; ++i) {
+        cout << secuencia[i] << " ";
+        count++;
+    }
+
+    cout << endl;
+    cout << "count1: " << count << endl;
+
+    //---------------------------------------------------//
     
     return secuencia;
 }
 
 
 // Función que genera un arreglo skewed, según alpha
-vector<int> Skewed(int N, int M, double alpha) {
+vector<ll> Skewed(ll N, ll M, double alpha) {
 
-    int SUM = 0;
-    // Crear un vector con elementos de 1 a N, en donde asignaremos f(i)
-    vector<int> repeticiones(N);
-    for (int i = 0; i < N; i++) {
-        repeticiones[i] = floor(pow((i + 1), alpha));
+    
+    ll SUM = 0;
+    vector<ll> repeticiones(N);
+
+    // Crear un vector con elementos de 1 a N
+    for (ll i = 0; i < N; ++i) {
+        repeticiones[i] = i + 1;
+    }
+
+    // Desordenar el vector
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(repeticiones.begin(), repeticiones.end(), g);
+    
+    // Asignamos los valores de f(i)
+    for (ll i = 0; i < N; i++) {
+        repeticiones[i] = floor(pow((repeticiones[i]), alpha));
         SUM += repeticiones[i];
     }
 
     // Normalizar el arreglo
-    for (int i = 0; i < N; ++i) {
+    for (ll i = 0; i < N; ++i) {
         repeticiones[i] = ceil((static_cast<double>(repeticiones[i])/SUM)*M);
     }
     
     // Repetir cada elemento según repeticiones[i]
-    vector<int> secuencia(M);
-    int index = 0;
-    for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < repeticiones[i]; ++j) {
+    vector<ll> secuencia(M);
+    ll index = 0;
+    for (ll i = 0; i < N; ++i) {
+        for (ll j = 0; j < repeticiones[i]; ++j) {
+            if (index == M) {
+                break;
+            }
             secuencia[index] = i+1;
             ++index;
         }
+
     }
 
     // Desordenar el arreglo
-    random_device rd;
-    mt19937 g(rd());
     shuffle(secuencia.begin(), secuencia.end(), g);
 
+    //---------------------------------------------------//
     //print secuencia
-    int count = 0;
-    for (int i = 0; i < M; ++i) {
+    ll count = 0;
+
+    cout << "skewed: " << endl;
+
+    for (ll i = 0; i < M; ++i) {
         cout << secuencia[i] << " ";
         count++;
     }
-    //print count
     cout << endl;
-    cout << count << endl;
+    cout << "count2: " << count << endl;
+
+    //---------------------------------------------------//
+
     return secuencia;
 }
 
 int main() {
 
-    //----------------------------------------------------//
-    /*
-    // Generar un arreglo equiprobable
-    int N = 1 << 12;
-    int M = 1 << 16;
-    int alpha = 0.5;
+    vector<ll> equi = Equiprobable(100, 500);
 
-    
-    vector<int> sec_eq = Equiprobable(N, M);
-    for (int i = 0; i < M; ++i) {
-        cout << sec_eq[i] << " ";
-    }
-    cout << endl;
-    
-    
-    // Generar un arreglo skewed
-    vector<int> sec_skew = Skewed(N, M, alpha);
-    for (int i = 0; i < M; ++i) {
-        cout << sec_skew[i] << " ";
-    }
-    cout << endl;
-    */
-   //----------------------------------------------------//
-
-   Skewed(100, 500, 1.5);
+    vector<ll> skw  = Skewed(100, 500, 1.5);
 
     return 0;
 }
