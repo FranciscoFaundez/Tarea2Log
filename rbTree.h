@@ -1,6 +1,8 @@
 #ifndef RBTREE_H
 #define RBTREE_H
 
+using namespace std;
+
 struct Node {
 	int key; 
 	Node *parent; 
@@ -30,12 +32,9 @@ public:
     void rightRotate(NodePtr x);
     void insert(int key);
     void prettyPrint();
-    void preOrderHelper(NodePtr node);
-    void inOrderHelper(NodePtr node);
-    void postOrderHelper(NodePtr node);
     void printHelper(NodePtr root, string indent, bool last);
-    void preorder();
-    void inorder();
-    void postorder();
+    void deleteTree(Node* raiz);
+    void deleteCompleteTree();
+
 };
 #endif

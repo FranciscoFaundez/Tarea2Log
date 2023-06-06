@@ -5,24 +5,24 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
-
-
+#include "splayTree.h"
+#include "rbTree.h"
 
 using namespace std;
 using ll = long long;
 
 // Función que genera un arreglo equiprobable
-vector<ll> Equiprobable(ll N, ll M) {
+vector<int> Equiprobable(int N, int M) {
     // Crear un vector con elementos de 1 a N
-    vector<ll> arreglo(N);
-    for (ll i = 0; i < N; ++i) {
+    vector<int> arreglo(N);
+    for (int i = 0; i < N; ++i) {
         arreglo[i] = i + 1;
     }
     
     // Repetir cada elemento M/N veces
-    vector<ll> secuencia(M);
-    ll index = 0;
-    for (ll i = 0; i < M; ++i) {
+    vector<int> secuencia(M);
+    int index = 0;
+    for (int i = 0; i < M; ++i) {
         secuencia[i] = arreglo[index];
         index = (index + 1) % N;
     }
@@ -37,14 +37,14 @@ vector<ll> Equiprobable(ll N, ll M) {
 
 
 // Función que genera un arreglo skewed, según alpha
-vector<ll> Skewed(ll N, ll M, double alpha) {
+vector<int> Skewed(int N, int M, double alpha) {
 
     
-    ll SUM = 0;
-    vector<ll> repeticiones(N);
+    int SUM = 0;
+    vector<int> repeticiones(N);
 
     // Crear un vector con elementos de 1 a N
-    for (ll i = 0; i < N; ++i) {
+    for (int i = 0; i < N; ++i) {
         repeticiones[i] = i + 1;
     }
 
@@ -54,21 +54,21 @@ vector<ll> Skewed(ll N, ll M, double alpha) {
     shuffle(repeticiones.begin(), repeticiones.end(), g);
     
     // Asignamos los valores de f(i)
-    for (ll i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         repeticiones[i] = floor(pow((repeticiones[i]), alpha));
         SUM += repeticiones[i];
     }
 
     // Normalizar el arreglo
-    for (ll i = 0; i < N; ++i) {
+    for (int i = 0; i < N; ++i) {
         repeticiones[i] = ceil((static_cast<double>(repeticiones[i])/SUM)*M);
     }
     
     // Repetir cada elemento según repeticiones[i]
-    vector<ll> secuencia(M);
-    ll index = 0;
-    for (ll i = 0; i < N; ++i) {
-        for (ll j = 0; j < repeticiones[i]; ++j) {
+    vector<int> secuencia(M);
+    int index = 0;
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < repeticiones[i]; ++j) {
             if (index == M) {
                 break;
             }
@@ -84,14 +84,34 @@ vector<ll> Skewed(ll N, ll M, double alpha) {
     return secuencia;
 }
 
+/*
+SplayNode* fillSplay(SplayNode* root, vector<int> secuencia, SplayTree st) {
+    root = NULL;
+    int largo = secuencia.size();
 
-
+    for (int i = 0; i < largo; ++i) {
+        root = st.Insert(secuencia[i], root);
+    }
+    return root;
+}
+*/
 
 int main() {
 
-    vector<ll> equi = Equiprobable(100, 500);
+    vector<int> equi = Equiprobable(100, 500);
 
-    vector<ll> skw  = Skewed(100, 500, 1.5);
+    vector<int> skw  = Skewed(100, 500, 1.5);
+
+
+    int largo = equi.size();
+
+    SplayTree st;
+    SplayNode *root;
+    root = NULL;
+    for (int i = 0; i < largo; ++i) {
+        root = st.Insert(equi[i], root);
+    }
+    
 
     return 0;
 }

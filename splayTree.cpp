@@ -1,12 +1,19 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <random>
 #include <cstdio>
 #include <cstdlib>
+#include <cmath>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
+using ll = long long;
 
 // Create a structure to declare variable key, left child pointer and right child pointer.
 struct SplayNode{
-   int key;  
+   ll key;  
    SplayNode* left;
    SplayNode* right;
 };
@@ -35,7 +42,7 @@ class SplayTree{
 
 
     // Create a function Splay to implement top-down splay tree.
-    SplayNode* Splay(int key, SplayNode* root){
+    SplayNode* Splay(ll key, SplayNode* root){
 
         if (!root){
             return NULL;
@@ -99,7 +106,7 @@ class SplayTree{
 
 
     // Create a function New_Node() to create nodes in the tree.
-    SplayNode* New_Node(int key){
+    SplayNode* New_Node(ll key){
         SplayNode* p_node = new SplayNode;
         if(!p_node){
             fprintf(stderr, "Out of memory!\n");
@@ -113,7 +120,7 @@ class SplayTree{
 
 
     // Create a function Insert() to insert nodes into the tree.
-    SplayNode* Insert(int key, SplayNode* root){
+    SplayNode* Insert(ll key, SplayNode* root){
 
         static SplayNode* p_node = NULL;
 
@@ -153,7 +160,7 @@ class SplayTree{
 
 
     // Create a function Search() to search the nodes in the tree.
-    SplayNode* Search(int key, SplayNode* root){
+    SplayNode* Search(ll key, SplayNode* root){
         return Splay(key, root);
     }
 
@@ -194,12 +201,115 @@ class SplayTree{
 
 };
 
+//----------------------------------------//
+
+// Función que genera un arreglo equiprobable
+vector<ll> Equiprobable(ll N, ll M) {
+    // Crear un vector con elementos de 1 a N
+    vector<ll> arreglo(N);
+    for (ll i = 0; i < N; ++i) {
+        arreglo[i] = i + 1;
+    }
+    
+    // Repetir cada elemento M/N veces
+    vector<ll> secuencia(M);
+    ll index = 0;
+    for (ll i = 0; i < M; ++i) {
+        secuencia[i] = arreglo[index];
+        index = (index + 1) % N;
+    }
+    
+    // Desordenar el arreglo
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(secuencia.begin(), secuencia.end(), g);
+    
+    return secuencia;
+}
 
 
+
+// Función que genera un arreglo skewed, según alpha
+vector<ll> Skewed(ll N, ll M, double alpha) {
+
+    
+    ll SUM = 0;
+    vector<ll> repeticiones(N);
+
+    // Crear un vector con elementos de 1 a N
+    for (ll i = 0; i < N; ++i) {
+        repeticiones[i] = i + 1;
+    }
+
+    // Desordenar el vector
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(repeticiones.begin(), repeticiones.end(), g);
+    
+    // Asignamos los valores de f(i)
+    for (ll i = 0; i < N; i++) {
+        repeticiones[i] = floor(pow((repeticiones[i]), alpha));
+        SUM += repeticiones[i];
+    }
+
+    // Normalizar el arreglo
+    for (ll i = 0; i < N; ++i) {
+        repeticiones[i] = ceil((static_cast<double>(repeticiones[i])/SUM)*M);
+    }
+    
+    // Repetir cada elemento según repeticiones[i]
+    vector<ll> secuencia(M);
+    ll index = 0;
+    for (ll i = 0; i < N; ++i) {
+        for (ll j = 0; j < repeticiones[i]; ++j) {
+            if (index == M) {
+                break;
+            }
+            secuencia[index] = i+1;
+            ++index;
+        }
+
+    }
+
+    // Desordenar el arreglo
+    shuffle(secuencia.begin(), secuencia.end(), g);
+
+    return secuencia;
+}
+
+//Función que rellena el árbol splay con una secuencia
+SplayNode* fillSplay(SplayNode* root, SplayTree st,ll N) {
+
+    for (ll i = 0; i < N; ++i) {
+        root = st.Insert(i+1, root);
+    }
+    return root;
+}
+
+//Función que vbusca los elementos de una secuencia en el árbol splay
+SplayNode* searchSplay(SplayNode* root, SplayTree st, vector<ll> secuencia, ll M) {
+
+    // Start the timer
+    auto start = high_resolution_clock::now();
+
+    for (ll i = 0; i < M; ++i) {
+        root = st.Search(secuencia[i], root);
+        //cout << " Splay: " << root->key;
+    }
+
+    // Stop the timer and calculate the duration
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    double miliseconds = duration.count() * 0.001;
+
+    // Output the duration in milliseconds
+    cout << "Execution time: " << miliseconds << " miliseconds" << endl;
+    return root;
+}
 
 
 int main() {
-
+    /*
    SplayTree st;
    SplayNode *root;
    root = NULL;
@@ -240,6 +350,21 @@ int main() {
    //Delete the tree
     st.deleteCompleteTree();
     st.InOrder(root);
-    
+    */
+
+    ll N = 100;
+    ll M = 500;
+
+    vector<ll> equi = Equiprobable(100, 500);
+
+    vector<ll> skw  = Skewed(100, 500, 1.5);
+
+    SplayTree st;
+    SplayNode *root = NULL;
+
+    root = fillSplay(root, st, N);
+
+    root = searchSplay(root, st, equi, M);
+
     return 0;
 }
