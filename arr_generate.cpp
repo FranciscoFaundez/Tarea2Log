@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <cmath>
 
+
+
 using namespace std;
 using ll = long long;
 
@@ -29,23 +31,6 @@ vector<ll> Equiprobable(ll N, ll M) {
     random_device rd;
     mt19937 g(rd());
     shuffle(secuencia.begin(), secuencia.end(), g);
-
-    //---------------------------------------------------//
-
-    //print secuencia
-
-    cout << "equiprobable: " << endl;
-
-    ll count = 0;
-    for (ll i = 0; i < M; ++i) {
-        cout << secuencia[i] << " ";
-        count++;
-    }
-
-    cout << endl;
-    cout << "count1: " << count << endl;
-
-    //---------------------------------------------------//
     
     return secuencia;
 }
@@ -96,23 +81,11 @@ vector<ll> Skewed(ll N, ll M, double alpha) {
     // Desordenar el arreglo
     shuffle(secuencia.begin(), secuencia.end(), g);
 
-    //---------------------------------------------------//
-    //print secuencia
-    ll count = 0;
-
-    cout << "skewed: " << endl;
-
-    for (ll i = 0; i < M; ++i) {
-        cout << secuencia[i] << " ";
-        count++;
-    }
-    cout << endl;
-    cout << "count2: " << count << endl;
-
-    //---------------------------------------------------//
-
     return secuencia;
 }
+
+
+
 
 int main() {
 
