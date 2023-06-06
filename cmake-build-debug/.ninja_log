@@ -1,0 +1,12 @@
+# ninja log v5
+10	260	7076242869971533	CMakeFiles/Tarea2.dir/RedBlackTree.cpp.obj	f1ee0f342f58d1df
+1	421	7076385530627459	CMakeFiles/Tarea2.dir/SplayTree.cpp.obj	6a4b2460cba545bc
+3	571	7076385532128441	CMakeFiles/Tarea2.dir/Permutations.cpp.obj	8b47c5ea10a57fef
+6	651	7076385532935743	CMakeFiles/Tarea2.dir/main.cpp.obj	ad2ca2a2642ec0a9
+247	335	7076386148609827	Tarea2.exe	906f2f7e0abfb10e
+1	110	7076432703135776	build.ninja	88febc2cdef5ad3d
+2	247	7076386147752697	CMakeFiles/Tarea2.dir/RBTree.cpp.obj	f86342129138453b
+1	146	7076432703135776	build.ninja	88febc2cdef5ad3d
+2	240	7076432705856673	CMakeFiles/Tarea2.dir/RBTree.cpp.obj	f86342129138453b
+4	682	7076432710261780	CMakeFiles/Tarea2.dir/main.cpp.obj	ad2ca2a2642ec0a9
+682	796	7076432711388041	Tarea2.exe	906f2f7e0abfb10e

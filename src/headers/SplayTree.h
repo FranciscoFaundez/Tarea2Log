@@ -1,7 +1,10 @@
-#ifndef SPLAYTREE_H_INCLUDED
-#define SPLAYTREE_H_INCLUDED
+//
+// Created by admin on 04-06-2023.
+//
 
-#include <iostream>
+#ifndef TAREA2_SPLAYTREE_H
+#define TAREA2_SPLAYTREE_H
+
 #include <vector>
 #include "AbstractTree.h"
 
@@ -44,7 +47,15 @@ public:
      * Mide el uso en memoria del árbol.
      * @return El tamaño en bytes del árbol.
      */
-    int memoryUsage() override;
+    size_t memoryUsage() override;
+
+    /**
+    * Retorna el nombre del tipo de árbol que es.
+    * @return "SplayTree"
+    */
+    std::string typeTree() override;
+
+    void test() override;
 
 private:
     int root, size;
@@ -77,6 +88,6 @@ private:
      * @param node El índice del nodo raíz del árbol.
      */
     void preOrder(int node);
-};
 
-#endif // SPLAYTREE_H_INCLUDED
+};
+#endif //TAREA2_SPLAYTREE_H

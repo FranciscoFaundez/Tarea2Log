@@ -1,6 +1,38 @@
-#include "Permutations.h"
+//
+// Created by admin on 04-06-2023.
+//
+
+#include "headers/Permutations.h"
+
+std::vector<int> PermutationEqui(int n_max, int seed) {
+    // Tamaño del vector arr
+    const int SIZE_ARR_M = 1 << 28;
+
+    // Generamos la semilla para la función shuffle
+    std::mt19937 g(seed);
+
+    // Creamos el vector arr
+    std::vector<int> arr(SIZE_ARR_M);
+    for (int i = 0; i < SIZE_ARR_M; i++) {
+        // Agregamos a cada elemento i-esimo del vector
+        // el resto de dividir i entre n_max más 1
+        // Generando una periodicidad de 1 hasta n_max
+        arr[i] = (i % n_max) + 1;
+    }
+
+    // Revolvemos el array
+    std::shuffle(arr.begin(), arr.end(), g);
+
+    // Retornamos el vector
+    return arr;
+}
 
 std::vector<int> PermutationSkew(int n_max, int seed, float alpha){
+    // alpha igual 0 implica un array equiprobable
+    if (alpha==0){
+        return PermutationEqui(n_max,seed);
+    }
+
     // Tamaño del array M
     const int SIZE_ARR_M = 1 << 28;
 
@@ -53,32 +85,4 @@ std::vector<int> PermutationSkew(int n_max, int seed, float alpha){
 
     // Retornamos el array C
     return arr_C;
-}
-
-
-std::vector<int> PermutationEqui(int n_max, int seed) {
-    // Tamaño del vector arr
-    const int SIZE_ARR_M = 1 << 28;
-
-    // Generamos la semilla para la función shuffle
-    std::mt19937 g(seed);
-
-    // Creamos el vector arr
-    std::vector<int> arr(SIZE_ARR_M);
-    for (int i = 0; i < SIZE_ARR_M; i++) {
-        // Agregamos a cada elemento i-esimo del vector
-        // el resto de dividir i entre n_max más 1
-        // Generando una periodicidad de 1 hasta n_max
-        arr[i] = (i % n_max) + 1;
-    }
-    
-    // Revolvemos el array
-    std::shuffle(arr.begin(), arr.end(), g);
-
-    // Retornamos el vector
-    return arr;
-}
-
-int main(){
-    return 0;
 }

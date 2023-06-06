@@ -1,4 +1,10 @@
-#include "SplayTree.h"
+//
+// Created by admin on 04-06-2023.
+//
+
+#include <cassert>
+#include "headers/SplayTree.h"
+
 
 /**
 * Constructor de la clase SplayTree.
@@ -67,17 +73,17 @@ void SplayTree::print() {
  * Mide el uso en memoria del árbol.
  * @return El tamaño en bytes del árbol.
  */
-int SplayTree::memoryUsage() {
-    int total_size = 0;
-    total_size += sizeof(root);
-    total_size += sizeof(size);
-    for (int i = 0; i < nodes.size(); i++) {
-        total_size += sizeof(nodes[i].key);
-        total_size += sizeof(nodes[i].left);
-        total_size += sizeof(nodes[i].right);
+size_t SplayTree::memoryUsage() {
+    int total_size = 0; // Inicializa la variable total_size a cero.
+    total_size += sizeof(root); // Agrega el tamaño en bytes del atributo root al total.
+    total_size += sizeof(size); // Agrega el tamaño en bytes del atributo size al total.
+    for (auto & node : nodes) { // Recorre el vector de nodos nodes.
+        total_size += sizeof(node.key); // Agrega el tamaño en bytes del atributo key de cada nodo al total.
+        total_size += sizeof(node.left); // Agrega el tamaño en bytes del atributo left de cada nodo al total.
+        total_size += sizeof(node.right); // Agrega el tamaño en bytes del atributo right de cada nodo al total.
     }
-    total_size += sizeof(nodes);
-    return total_size;
+    total_size += sizeof(nodes); // Agrega el tamaño en bytes del vector nodes al total.
+    return total_size; // Retorna el tamaño total en bytes del árbol.
 }
 /**
  * Realiza una rotación a la derecha en el nodo dado.
@@ -153,27 +159,45 @@ void SplayTree::preOrder(int node) {
     }
 }
 
-int main() {
-    SplayTree tree;
-
-    tree.insert(100);
-    tree.insert(50);
-    tree.insert(200);
-    tree.insert(40);
-    tree.insert(30);
-    tree.insert(60);
-    tree.insert(55);
-    tree.insert(150);
-    tree.insert(300);
-
-    tree.print();
-
-    std::cout << tree.search(55) << std::endl;
-    std::cout << tree.search(175) << std::endl;
-
-    std::cout << "Memory usage: " << tree.memoryUsage() << " bytes" << std::endl;
-
-    tree.clear();
-
-    return 0;
+std::string SplayTree::typeTree() {
+    return "SplayTree";
 }
+
+void SplayTree::test() {
+    std::cout <<"############## TEST SPLAYTREE ###############" << std::endl;
+    SplayTree st;
+
+    std::cout << "Prueba de insertar elementos 1" << std::endl;
+    std::cout << "4 5 1 2 8" << std::endl;
+    st.insert(4);
+    st.insert(5);
+    st.insert(1);
+    st.insert(2);
+    st.insert(8);
+
+    st.print(); // print
+    std::cout << "Prueba de insertar elementos 2" << std::endl;
+    std::cout << "10 11 3" << std::endl;
+    st.insert(10);
+    st.insert(11);
+    st.insert(3);
+
+    st.print(); // print
+
+    std::cout << "Buscando el valor 10" << std::endl;
+    assert(st.search(10) && "Error: No se encontró el valor 10");
+    std::cout << "Pasa\n" << std::endl;
+
+    //Search for non-existing node
+    std::cout <<"Buscar valor que no esta en el arbol (50)" << std::endl;
+    assert(!st.search(50) && "Error: dice que el valor se encuentra en el arbol.");
+    std::cout << "Pasa\n" << std::endl;
+
+    //Clear the tree
+    std::cout << "Limpiamos el arbol" << std::endl;
+    st.clear();
+    st.print(); //print
+    std::cout <<"################ END TEST #################" << std::endl;
+}
+
+
