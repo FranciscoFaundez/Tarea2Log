@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\Tarea2Log.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\ar.exe qc CMakeFiles\Tarea2Log.dir/objects.a @CMakeFiles\Tarea2Log.dir\objects1
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE  -O3 -g -Wl,--whole-archive CMakeFiles\Tarea2Log.dir/objects.a -Wl,--no-whole-archive -o Tarea2Log.exe -Wl,--out-implib,libTarea2Log.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Tarea2Log.dir\linkLibs.rsp
