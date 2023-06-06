@@ -1,3 +1,3 @@
-C:/Users/admin/Desktop/Cursos Tomados este semestre/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/Tarea2Log.dir
-C:/Users/admin/Desktop/Cursos Tomados este semestre/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/admin/Desktop/Cursos Tomados este semestre/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/Tarea2Log.dir
+C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/cmake-build-debug/CMakeFiles/rebuild_cache.dir

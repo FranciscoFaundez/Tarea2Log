@@ -43,19 +43,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2023.1.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log"
+CMAKE_SOURCE_DIR = C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Tarea2Log.dir/depend.make
@@ -69,60 +69,60 @@ include CMakeFiles/Tarea2Log.dir/progress.make
 include CMakeFiles/Tarea2Log.dir/flags.make
 
 CMakeFiles/Tarea2Log.dir/src/main.cpp.obj: CMakeFiles/Tarea2Log.dir/flags.make
-CMakeFiles/Tarea2Log.dir/src/main.cpp.obj: C:/Users/admin/Desktop/Cursos\ Tomados\ este\ semestre/Logaritmos/Tarea2Log/src/main.cpp
+CMakeFiles/Tarea2Log.dir/src/main.cpp.obj: C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/src/main.cpp
 CMakeFiles/Tarea2Log.dir/src/main.cpp.obj: CMakeFiles/Tarea2Log.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Tarea2Log.dir/src/main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/main.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\main.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\main.cpp.obj -c "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Tarea2Log.dir/src/main.cpp.obj"
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/main.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\main.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\main.cpp.obj -c C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\main.cpp
 
 CMakeFiles/Tarea2Log.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tarea2Log.dir/src/main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\main.cpp" > CMakeFiles\Tarea2Log.dir\src\main.cpp.i
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\main.cpp > CMakeFiles\Tarea2Log.dir\src\main.cpp.i
 
 CMakeFiles/Tarea2Log.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tarea2Log.dir/src/main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\main.cpp" -o CMakeFiles\Tarea2Log.dir\src\main.cpp.s
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\main.cpp -o CMakeFiles\Tarea2Log.dir\src\main.cpp.s
 
 CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj: CMakeFiles/Tarea2Log.dir/flags.make
-CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj: C:/Users/admin/Desktop/Cursos\ Tomados\ este\ semestre/Logaritmos/Tarea2Log/src/Permutations.cpp
+CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj: C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/src/Permutations.cpp
 CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj: CMakeFiles/Tarea2Log.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.obj -c "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\Permutations.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj"
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.obj -c C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\Permutations.cpp
 
 CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\Permutations.cpp" > CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.i
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\Permutations.cpp > CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.i
 
 CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tarea2Log.dir/src/Permutations.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\Permutations.cpp" -o CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.s
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\Permutations.cpp -o CMakeFiles\Tarea2Log.dir\src\Permutations.cpp.s
 
 CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj: CMakeFiles/Tarea2Log.dir/flags.make
-CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj: C:/Users/admin/Desktop/Cursos\ Tomados\ este\ semestre/Logaritmos/Tarea2Log/src/SplayTree.cpp
+CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj: C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/src/SplayTree.cpp
 CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj: CMakeFiles/Tarea2Log.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.obj -c "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\SplayTree.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj"
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.obj -c C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\SplayTree.cpp
 
 CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\SplayTree.cpp" > CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.i
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\SplayTree.cpp > CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.i
 
 CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tarea2Log.dir/src/SplayTree.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\SplayTree.cpp" -o CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.s
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\SplayTree.cpp -o CMakeFiles\Tarea2Log.dir\src\SplayTree.cpp.s
 
 CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj: CMakeFiles/Tarea2Log.dir/flags.make
-CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj: C:/Users/admin/Desktop/Cursos\ Tomados\ este\ semestre/Logaritmos/Tarea2Log/src/RBTree.cpp
+CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj: C:/Users/Lenovo/Downloads/Logaritmos/Tarea2Log/src/RBTree.cpp
 CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj: CMakeFiles/Tarea2Log.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.obj -c "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\RBTree.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj"
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.obj -MF CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.obj.d -o CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.obj -c C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\RBTree.cpp
 
 CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\RBTree.cpp" > CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.i
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\RBTree.cpp > CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.i
 
 CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tarea2Log.dir/src/RBTree.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\src\RBTree.cpp" -o CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.s
+	C:\Users\Lenovo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\src\RBTree.cpp -o CMakeFiles\Tarea2Log.dir\src\RBTree.cpp.s
 
 # Object files for target Tarea2Log
 Tarea2Log_OBJECTS = \
@@ -142,7 +142,7 @@ Tarea2Log.exe: CMakeFiles/Tarea2Log.dir/build.make
 Tarea2Log.exe: CMakeFiles/Tarea2Log.dir/linkLibs.rsp
 Tarea2Log.exe: CMakeFiles/Tarea2Log.dir/objects1
 Tarea2Log.exe: CMakeFiles/Tarea2Log.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Tarea2Log.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Tarea2Log.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Tarea2Log.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -154,6 +154,6 @@ CMakeFiles/Tarea2Log.dir/clean:
 .PHONY : CMakeFiles/Tarea2Log.dir/clean
 
 CMakeFiles/Tarea2Log.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log" "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log" "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug" "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug" "C:\Users\admin\Desktop\Cursos Tomados este semestre\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles\Tarea2Log.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug C:\Users\Lenovo\Downloads\Logaritmos\Tarea2Log\cmake-build-debug\CMakeFiles\Tarea2Log.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Tarea2Log.dir/depend
 
