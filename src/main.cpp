@@ -67,35 +67,37 @@ void LoopSearch(int index_perm, std::vector<int> perm, AbstractTree* tree, int m
             tree->insert(j);
         }
         // Escoger 5 al azar
-        std::mt19937 g(seed); // Set generador
-        std::uniform_int_distribution<int> dis(0,(1<<28)-1); // (0, 2^28 -1)
+        //std::mt19937 g(seed); // Set generador
+        //std::uniform_int_distribution<int> dis(0,(1<<28)-1); // (0, 2^28 -1)
 
+        // crear vector que guarda los tiempos
         // Tests
-        for(int k = 0; k<num_searchs;k++){
-            int search_value = perm[dis(g)];
+        for (int & k : perm){
 
             auto start_search = std::chrono::high_resolution_clock::now();
-            tree->search(search_value);
+            tree->search(k);
             auto end_search = std::chrono::high_resolution_clock::now();
 
-            std::chrono::duration<double> delta_search = end_search - start_search;
-
-            char buffer[50];
-            std::sprintf(buffer, "%.10f", delta_search.count());
-            std::string result = buffer;
-
-            std::map<std::string, std::string> datapoint_search = {{"index_permutation", std::to_string(index_perm)},
-                                                                   {"type_tree", tree->typeTree()},
-                                                                   {"num_nodes", std::to_string((1 << max_num))},
-                                                                   {"time_search(us)", result},
-                                                                   {"tree_memory_usage(bytes)",std::to_string(tree->memoryUsage())},
-                                                                   {"search_value", std::to_string(search_value)},
-                                                                   };
-            // Escribir los datos en el archivo
-            escribirArchivo("df_search.txt",datapoint_search);
+            std::chrono::duration<double> delta_search = end_search - start_search; // guardarlo en el vector de tiempos
         }
 
-        tree->clear(); // Liberamos memoria
+        //int SUM = std::accumulate(arr_F.begin(), arr_F.end(), 0);
+
+        char buffer[50];
+        std::sprintf(buffer, "%.10f", delta_search.count()); //reemplazar por SUM/(1<<28)
+        std::string result = buffer;
+
+
+    std::map<std::string, std::string> datapoint_search = {{"index_permutation", std::to_string(index_perm)},
+                                                           {"type_tree", tree->typeTree()},
+                                                           {"num_nodes", std::to_string((1 << max_num))},
+                                                           {"time_search(us)", result},
+                                                           {"tree_memory_usage(bytes)",std::to_string(tree->memoryUsage())},
+    };
+    // Escribir los datos en el archivo
+    escribirArchivo("df_search.txt",datapoint_search);
+
+    tree->clear(); // Liberamos memoria
 }
 
 void LoopPermutation(int index_perm, float alpha, SplayTree* st, RBTree* rbt, int max_num, int num_search , int seed){
