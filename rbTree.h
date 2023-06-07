@@ -1,14 +1,23 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <random>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
+using ll = long long;
 
 // key structure that represents a node in the tree
 struct Node {
-	int key; 
+	ll key; 
 	Node *parent; 
 	Node *left; // pointer to left child
 	Node *right; // pointer to right child
-	int color; // 1 -> Red, 0 -> Black
+	ll color; // 1 -> Red, 0 -> Black
 };
 
 typedef Node *NodePtr;
@@ -23,7 +32,7 @@ public:
 	// initializes the nodes with appropirate values
 	// all the pointers are set to point to the null pointer
 
-	NodePtr searchTreeHelper(NodePtr node, int key) {
+	NodePtr searchTreeHelper(NodePtr node, ll key) {
 		if (node == TNULL || key == node->key) {
 
 			if (node->key == key) {
@@ -103,7 +112,7 @@ public:
 
 	// search the tree for the key k
 	// and return the corresponding node
-	NodePtr search(int k) {
+	NodePtr search(ll k) {
 		return searchTreeHelper(this->root, k);
 	}
 
@@ -147,7 +156,7 @@ public:
 
 	// insert the key to the tree in its appropriate position
 	// and fix the tree
-	void insert(int key) {
+	void insert(ll key) {
 		// Ordinary Binary Search Insertion
 		NodePtr node = new Node;
 		node->parent = nullptr;
