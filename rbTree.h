@@ -9,15 +9,15 @@
 
 using namespace std;
 using namespace std::chrono;
-using ll = long long;
+using uint = long long;
 
 // key structure that represents a node in the tree
 struct Node {
-	ll key; 
+	uint key;
 	Node *parent; 
 	Node *left; // pointer to left child
 	Node *right; // pointer to right child
-	ll color; // 1 -> Red, 0 -> Black
+	bool color; // 1 -> Red, 0 -> Black
 };
 
 typedef Node *NodePtr;
@@ -32,13 +32,13 @@ public:
 	// initializes the nodes with appropirate values
 	// all the pointers are set to point to the null pointer
 
-	NodePtr searchTreeHelper(NodePtr node, ll key) {
+	NodePtr searchTreeHelper(NodePtr node, uint key) {
 		if (node == TNULL || key == node->key) {
 
 			if (node->key == key) {
         		return node;
     		}else{
-			return NULL;
+			return nullptr;
 			}
 		}
 
@@ -57,9 +57,9 @@ public:
 				u = k->parent->parent->left; // uncle
 				if (u->color == 1) {
 					// case 3.1
-					u->color = 0;
-					k->parent->color = 0;
-					k->parent->parent->color = 1;
+					u->color = false;
+					k->parent->color = false;
+					k->parent->parent->color = true;
 					k = k->parent->parent;
 				} else {
 					if (k == k->parent->left) {
@@ -68,8 +68,8 @@ public:
 						rightRotate(k);
 					}
 					// case 3.2.1
-					k->parent->color = 0;
-					k->parent->parent->color = 1;
+					k->parent->color = false;
+					k->parent->parent->color = true;
 					leftRotate(k->parent->parent);
 				}
 			} else {
@@ -77,9 +77,9 @@ public:
 
 				if (u->color == 1) {
 					// mirror case 3.1
-					u->color = 0;
-					k->parent->color = 0;
-					k->parent->parent->color = 1;
+					u->color = false;
+					k->parent->color = false;
+					k->parent->parent->color = true;
 					k = k->parent->parent;	
 				} else {
 					if (k == k->parent->right) {
@@ -88,8 +88,8 @@ public:
 						leftRotate(k);
 					}
 					// mirror case 3.2.1
-					k->parent->color = 0;
-					k->parent->parent->color = 1;
+					k->parent->color = false;
+					k->parent->parent->color = true;
 					rightRotate(k->parent->parent);
 				}
 			}
@@ -97,13 +97,13 @@ public:
 				break;
 			}
 		}
-		root->color = 0;
+		root->color = false;
 	}
 
 	
 	RBTree() {
 		TNULL = new Node;
-		TNULL->color = 0;
+		TNULL->color = false;
 		TNULL->left = nullptr;
 		TNULL->right = nullptr;
 		root = TNULL;
@@ -112,7 +112,7 @@ public:
 
 	// search the tree for the key k
 	// and return the corresponding node
-	NodePtr search(ll k) {
+	NodePtr search(uint k) {
 		return searchTreeHelper(this->root, k);
 	}
 
@@ -156,14 +156,14 @@ public:
 
 	// insert the key to the tree in its appropriate position
 	// and fix the tree
-	void insert(ll key) {
+	void insert(uint key) {
 		// Ordinary Binary Search Insertion
 		NodePtr node = new Node;
 		node->parent = nullptr;
 		node->key = key;
 		node->left = TNULL;
 		node->right = TNULL;
-		node->color = 1; // new node must be red
+		node->color = true; // new node must be red
 
 		NodePtr y = nullptr;
 		NodePtr x = this->root;
@@ -189,7 +189,7 @@ public:
 
 		// if new node is a root node, simply return
 		if (node->parent == nullptr){
-			node->color = 0;
+			node->color = false;
 			return;
 		}
 
@@ -247,7 +247,18 @@ public:
 		}
 	}
 
+    void fillRB(uint N0, uint N) {
+        for (uint i = N0; i < N; ++i) {
+            this->insert(i+1);
+        }
+    }
 
+    static size_t memoryUsage(Node* node){
+        if(!node){
+            return 0;
+        }
+        return sizeof(&node) + memoryUsage(node->left) + memoryUsage(node->right);
+    }
 
 };
 /*

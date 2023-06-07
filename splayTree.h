@@ -9,11 +9,11 @@
 
 using namespace std;
 using namespace std::chrono;
-using ll = long long;
+using uint = long long;
 
 // Create a structure to declare variable key, left child pointer and right child pointer.
 struct SplayNode{
-   ll key;  
+   uint key;
    SplayNode* left;
    SplayNode* right;
 };
@@ -42,7 +42,7 @@ class SplayTree{
 
 
     // Create a function Splay to implement top-down splay tree.
-    SplayNode* Splay(ll key, SplayNode* root){
+    SplayNode* Splay(uint key, SplayNode* root){
 
         if (!root){
             return NULL;
@@ -106,7 +106,7 @@ class SplayTree{
 
 
     // Create a function New_Node() to create nodes in the tree.
-    SplayNode* New_Node(ll key){
+    SplayNode* New_Node(uint key){
         SplayNode* p_node = new SplayNode;
         if(!p_node){
             fprintf(stderr, "Out of memory!\n");
@@ -120,7 +120,7 @@ class SplayTree{
 
 
     // Create a function Insert() to insert nodes into the tree.
-    SplayNode* Insert(ll key, SplayNode* root){
+    SplayNode* Insert(uint key, SplayNode* root){
 
         static SplayNode* p_node = NULL;
 
@@ -160,7 +160,7 @@ class SplayTree{
 
 
     // Create a function Search() to search the nodes in the tree.
-    SplayNode* Search(ll key, SplayNode* root){
+    SplayNode* Search(uint key, SplayNode* root){
         return Splay(key, root);
     }
 
@@ -178,6 +178,12 @@ class SplayTree{
         root = nullptr;
     }
 
+    static size_t memoryUsageSplay(SplayNode* node){
+        if(!node){
+            return 0;
+        }
+        return sizeof(&node) + memoryUsageSplay(node->left) + memoryUsageSplay(node->right);
+    }
 
 
 
@@ -203,21 +209,21 @@ class SplayTree{
 
 
 //Función que rellena el árbol splay con una secuencia
-SplayNode* fillSplay(SplayNode* root, SplayTree st,ll N) {
+SplayNode* fillSplay(SplayNode* root, SplayTree st, uint N0, uint N) {
 
-    for (ll i = 0; i < N; ++i) {
+    for (uint i = N0; i < N; ++i) {
         root = st.Insert(i+1, root);
     }
     return root;
 }
 
 //Función que busca los elementos de una secuencia en el árbol splay
-SplayNode* searchSplay(SplayNode* root, SplayTree st, vector<ll> secuencia, ll M) {
+SplayNode* searchSplay(SplayNode* root, SplayTree st, vector<uint> secuencia, uint M) {
 
     // Start the timer
     auto start = high_resolution_clock::now();
 
-    for (ll i = 0; i < M; ++i) {
+    for (uint i = 0; i < M; ++i) {
         root = st.Search(secuencia[i], root);
         //cout << " Splay: " << root->key;
     }
@@ -284,12 +290,12 @@ int main() {
     st.InOrder(root);
     
 
-    ll N = 100;
-    ll M = 500;
+    uint N = 100;
+    uint M = 500;
 
-    vector<ll> equi = Equiprobable(100, 500);
+    vector<uint> equi = Equiprobable(100, 500);
 
-    vector<ll> skw  = Skewed(100, 500, 1.5);
+    vector<uint> skw  = Skewed(100, 500, 1.5);
 
     SplayTree st;
     SplayNode *root = NULL;
