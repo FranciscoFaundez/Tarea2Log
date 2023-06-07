@@ -98,19 +98,33 @@ SplayNode* fillSplay(SplayNode* root, vector<int> secuencia, SplayTree st) {
 
 int main() {
 
-    vector<int> equi = Equiprobable(100, 500);
+    ll N = 1<<16;
+    ll M = 1<<28;
 
-    vector<int> skw  = Skewed(100, 500, 1.5);
 
+    vector<int> equi = Equiprobable(N, M);
 
-    int largo = equi.size();
+    /*
+    printf("Arreglo equiprobable: \n");
+    for (int i = 0; i < 500; ++i) {
+        printf("%d ", equi[i]);
+    }
+    */
+
+    vector<int> skw  = Skewed(100, 500, 0.5);
+
+    /*
+    printf("\n\nArreglo skewed: \n");
+    for (int i = 0; i < 500; ++i) {
+        printf("%d ", skw[i]);
+    }
+    */
 
     SplayTree st;
-    SplayNode *root;
-    root = NULL;
-    for (int i = 0; i < largo; ++i) {
-        root = st.Insert(equi[i], root);
-    }
+    SplayNode *root = NULL;
+    root = fillSplay(root, st, N);
+
+    //st.InOrder(root);
     
 
     return 0;
