@@ -9,7 +9,7 @@
 
 using namespace std;
 using namespace std::chrono;
-using uint = long long;
+using uint = unsigned int;
 
 // Create a structure to declare variable key, left child pointer and right child pointer.
 struct SplayNode{

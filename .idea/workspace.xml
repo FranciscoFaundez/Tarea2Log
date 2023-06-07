@@ -18,8 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6066e205-5b4f-4a8d-b165-18ac78a78d58" name="Changes" comment="- Se refactorizó todo el proyecto usando un proyecto nuevo en CLion como base.&#10;- Se reestructura el Loop de experimentos, dejando que el análisis del insert se realice primero y luego el resto de experimentos.&#10;- Se logra hacer que funcione el loop de experimentos, cambiando el código de los arboles rojo-negro por el anterior.&#10;- Los tests de los arboles se colocaron como método dentro de su respectiva clase.">
-      <change beforePath="$PROJECT_DIR$/.idea/Tarea2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tarea2.iml" afterDir="false" />
+    <list default="true" id="6066e205-5b4f-4a8d-b165-18ac78a78d58" name="Changes" comment="Los experimentos funcionan.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/arr_generate.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/arr_generate.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rbTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbTree.h" afterDir="false" />
@@ -70,11 +69,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="arr_generate.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tarea2Log" TARGET_NAME="arr_generate.cpp" CONFIG_NAME="arr_generate.cpp">
       <option name="sourceFile" value="arr_generate.cpp" />
       <method v="2">
@@ -98,8 +92,18 @@
       <workItem from="1686063634227" duration="4678000" />
       <workItem from="1686098009393" duration="499000" />
       <workItem from="1686098523609" duration="1053000" />
-      <workItem from="1686119549431" duration="1664000" />
+      <workItem from="1686119549431" duration="1795000" />
+      <workItem from="1686122298850" duration="78000" />
+      <workItem from="1686122981422" duration="1697000" />
     </task>
+    <task id="LOCAL-00001" summary="Los experimentos funcionan.">
+      <created>1686121308600</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686121308600</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +128,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Se refactorizó todo el proyecto usando un proyecto nuevo en CLion como base.&#10;- Se reestructura el Loop de experimentos, dejando que el análisis del insert se realice primero y luego el resto de experimentos.&#10;- Se logra hacer que funcione el loop de experimentos, cambiando el código de los arboles rojo-negro por el anterior.&#10;- Los tests de los arboles se colocaron como método dentro de su respectiva clase." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Se refactorizó todo el proyecto usando un proyecto nuevo en CLion como base.&#10;- Se reestructura el Loop de experimentos, dejando que el análisis del insert se realice primero y luego el resto de experimentos.&#10;- Se logra hacer que funcione el loop de experimentos, cambiando el código de los arboles rojo-negro por el anterior.&#10;- Los tests de los arboles se colocaron como método dentro de su respectiva clase." />
+    <MESSAGE value="Los experimentos funcionan." />
+    <option name="LAST_COMMIT_MESSAGE" value="Los experimentos funcionan." />
   </component>
 </project>

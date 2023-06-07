@@ -35,30 +35,34 @@ vector<uint> Equiprobable(uint N, uint M, int seed) {
 vector<uint> Skewed(uint N, uint M, double alpha, int seed) {
 
 
-    uint SUM = 0;
-    vector<uint> repeticiones(N);
+    long long SUM = 0;
+    vector<long long> repeticiones(N);
+    vector<uint> copy(N);
 
     // Crear un vector con elementos de 1 a N
-    for (uint i = 0; i < N; ++i) {
-        repeticiones[i] = i + 1;
+    for (int i = 0; i < N; ++i) {
+            copy[i] = i + 1;
     }
 
     // Desordenar el vector
     mt19937 g(seed);
-    shuffle(repeticiones.begin(), repeticiones.end(), g);
+    shuffle(copy.begin(), copy.end(), g);
     
-    vector<uint> copy(N);
-    copy = repeticiones;
+
+    for(int i =0; i < N; i++){
+         repeticiones[i] = static_cast<long long>(copy[i]);
+    }
+
     
 
     // Asignamos los valores de f(i)
-    for (uint i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         repeticiones[i] = floor(pow((repeticiones[i]), alpha));
         SUM += repeticiones[i];
     }
 
     // Normalizar el arreglo
-    for (uint i = 0; i < N; ++i) {
+    for (int i = 0; i < N; ++i) {
         repeticiones[i] = ceil((static_cast<double>(repeticiones[i])/SUM)*M);
     }
 
@@ -68,13 +72,12 @@ vector<uint> Skewed(uint N, uint M, double alpha, int seed) {
     uint index = 0;
     for (uint i = 0; i < N; ++i) {
         for (uint j = 0; j < repeticiones[i]; ++j) {
-            if (index == M) {
+            if (index >= M) {
                 secuencia.push_back(copy[i]);
             }
             secuencia[index] = copy[i];
             ++index;
         }
-
     }
 
     // Desordenar el arreglo

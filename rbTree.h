@@ -9,7 +9,7 @@
 
 using namespace std;
 using namespace std::chrono;
-using uint = long long;
+using uint = unsigned int;
 
 // key structure that represents a node in the tree
 struct Node {
